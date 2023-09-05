@@ -1,5 +1,7 @@
 import Colors
+import Drawing
 import Math_Op
+import Drawing
 
 class Stats:
     def __init__(self, n):
@@ -86,10 +88,45 @@ class Stats:
             K = K+1
         return K
 
+    def colorManaPercentage(self):
+        freqs = Math_Op.frequency(self.getColors()[1])
+        labels = self.getColorMTGNames()
+        colors = self.getColorNameLst()
+        Drawing.drawPieChart(labels, freqs, colors)
+
+    def getColorNameLst(self):
+        names = []
+        for col in self.getColors()[0].getCols():
+            if col.lower() == 'u':
+                names.append('blue')
+            elif col.lower() == 'r':
+                names.append('red')
+            elif col.lower() == 'g':
+                names.append('green')
+            elif col.lower() == 'w':
+                names.append('#F3CF89')
+            elif col.lower() == 'b':
+                names.append('#A2998A')
+        return names
+
+    def getColorMTGNames(self):
+        names = []
+        for col in self.getColors()[0].getCols():
+            if col.lower() == 'u':
+                names.append('Island')
+            elif col.lower() == 'r':
+                names.append('Mountain')
+            elif col.lower() == 'g':
+                names.append('Forest')
+            elif col.lower() == 'w':
+                names.append('Plains')
+            elif col.lower() == 'b':
+                names.append('Swamp')
+        return names
+
 
 P = Stats(100)
 P.setColors()
 P.setMv()
 P.setDevotion()
-print(P.averageMv())
-print(P.landsNeeded())
+P.colorManaPercentage()

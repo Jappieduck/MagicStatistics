@@ -4,33 +4,33 @@ class Colors:
 
     def addCol(self, col):
         if col in ['u', 'b', 'w', 'r', 'g'] and col not in self.colors:
-            self.colors.append(col)
+            self.colors.append(col.upper())
         else:
             raise ValueError('Invalid input')
 
     def setCols(self):
-        print('Type 0 to stop')
+        added = []
         print('Use the abbreviations W,U,B,R,G')
-        col = input("Which colors do you play? ").lower()
+        col = input("Which colors do you play? (Type 0 to stop) ")
         if col == '0':
             cont = False
         else:
             cont = True
         while cont:
             try:
-                self.addCol(col)
-                col = input("Which other colors do you play? ").lower()
                 if col == '0':
                     cont = False
                 else:
-                    cont = True
+                    self.addCol(col.lower())
+                    added.append(col.lower())
+                    if ('w' in added and 'u' in added and 'r' in added and 'g' in added and 'b' in added):
+                        cont = False
+                    else:
+                        col = input("Which other colors do you play? (Type 0 to stop) ")
             except ValueError:
                 print('Invalid input, try again')
-                col = input("Which other colors do you play? ").lower()
-                if col == '0':
-                    cont = False
-                else:
-                    cont = True
+                col = input("Which other colors do you play? (Type 0 to stop) ")
+
 
     def setCol2(self, lst):
         self.colors = lst

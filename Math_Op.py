@@ -16,3 +16,12 @@ def hypGemProb(k,N,K,n):
     for i in range(k):
         prob = prob + hypergeom.pmf(i,N,K,n)
     return 1-prob
+
+
+def frequency(lst):
+    tot = sum(lst)
+    frequency_lst = []
+    for i in lst:
+        freq = i/tot
+        frequency_lst.append(freq)
+    return frequency_lst
