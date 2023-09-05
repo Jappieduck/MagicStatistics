@@ -6,7 +6,7 @@ import Drawing
 class Stats:
     def __init__(self, n):
         self.cols = [Colors.Colors(), []]
-        mvs = [i for i in range(0, 17)]
+        mvs = []
         self.mv = []
         self.size = n
 
@@ -124,9 +124,15 @@ class Stats:
                 names.append('Swamp')
         return names
 
+    def mvDistribution(self):
+        xlabel = 'Mana Value'
+        ylabel = 'Amount of cards'
+        xval = [i for i in range(0, len(self.getMv()))]
+        yval = self.getMv()
+        Drawing.drawBarGraph(xlabel, ylabel, xval, yval)
+
 
 P = Stats(100)
 P.setColors()
 P.setMv()
-P.setDevotion()
-P.colorManaPercentage()
+P.mvDistribution()
