@@ -1,6 +1,4 @@
-import numpy
 import matplotlib.pyplot as plt
-import Colors
 from matplotlib.ticker import MaxNLocator
 
 

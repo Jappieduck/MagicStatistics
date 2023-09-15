@@ -1,7 +1,6 @@
-import Colors
-import Drawing
-import Math_Op
-import Drawing
+from interface import Colors, Drawing
+from mathematics import MathOp
+
 
 class Stats:
     def __init__(self, n):
@@ -89,7 +88,7 @@ class Stats:
         return K
 
     def colorManaPercentage(self):
-        freqs = Math_Op.frequency(self.getColors()[1])
+        freqs = MathOp.frequency(self.getColors()[1])
         labels = self.getColorMTGNames()
         colors = self.getColorNameLst()
         Drawing.drawPieChart(labels, freqs, colors)
@@ -131,8 +130,3 @@ class Stats:
         yval = self.getMv()
         Drawing.drawBarGraph(xlabel, ylabel, xval, yval)
 
-
-P = Stats(100)
-P.setColors()
-P.setMv()
-P.mvDistribution()
